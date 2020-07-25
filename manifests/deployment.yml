@@ -1,0 +1,22 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: apicontagem 
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: apicontagem
+  template:
+    metadata:
+      labels:
+        app: apicontagem 
+    spec:
+      containers:
+        - name: apicontagem 
+          image: grofferegistry.azurecr.io/apicontagem
+          env:
+            - name: MensagemVariavel
+              value: Utilizando o Azure Kubernetes Service (AKS)
+          ports:
+          - containerPort: 80
